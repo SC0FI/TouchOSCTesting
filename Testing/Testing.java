@@ -24,6 +24,7 @@ public class Testing {
                 System.out.println("osc message sent" + i);
             }
             */
+            System.out.println("Please intput selection (1-3)");
             Scanner input = new Scanner(System.in);
 
 
@@ -43,7 +44,7 @@ public class Testing {
 
                 sender.send(msg2);
                 System.out.println("OSC message sent!");
-            } else {
+            } else if (selection == 3) {
                 System.out.println("Enter custom OSC directory");
                 String oscDirectory = input.next();
                 System.out.println("Please Select datatype \n Boolean : 1 \n Integer : 2 \n float : 3 \n");
@@ -51,19 +52,32 @@ public class Testing {
                 if (datatypeSelection == 1) {
                     System.out.println("please enter data (true/false)");
                     Boolean data = input.nextBoolean();
-                    OSCMessage msgCustom = new OSCMessage(oscDirectory,Collections.singletonList(data));
+                    OSCMessage msgCustom = new OSCMessage("/avatar/parameters/" + oscDirectory,Collections.singletonList(data));
                     sender.send(msgCustom);
                 } else if (datatypeSelection == 2) {
                     System.out.println("Please input data (1,2,3, etc)");
                     int data = input.nextInt();
-                    OSCMessage msgCustom = new OSCMessage("/avatar/parameters" + oscDirectory,Collections.singletonList(data));
+                    OSCMessage msgCustom = new OSCMessage("/avatar/parameters/" + oscDirectory,Collections.singletonList(data));
                     sender.send(msgCustom);
                 } else if (datatypeSelection == 3) {
                     System.out.println("Please input data (1.5,2.5,etc)");
                     float data = input.nextFloat();
-                    OSCMessage msgCustom = new OSCMessage(oscDirectory,Collections.singletonList(data));
+                    OSCMessage msgCustom = new OSCMessage("/avatar/parameters/" +oscDirectory,Collections.singletonList(data));
                     sender.send(msgCustom);
                 }
+            } else if (selection == 4) {
+                for(float i = 0; i < 1; i = (float) (i + 0.05)) {
+                    OSCMessage msgEars = new OSCMessage("/avatar/parameters/EarsHor", Collections.singletonList(i));
+                    sender.send(msgEars);
+                    System.out.println("ears Hor is [" + i + "]");
+                    TimeUnit.MILLISECONDS.sleep(50);
+                } for (float i = 1; i > -1; i = (float) (i - 0.05)) {
+                    OSCMessage msgEars = new OSCMessage("/avatar/parameters/EarsHor", Collections.singletonList(i));
+                    sender.send(msgEars);
+                    System.out.println("ears Hor is [" + i + "]");
+                    TimeUnit.MILLISECONDS.sleep(50);
+                }
+
             }
 
 
