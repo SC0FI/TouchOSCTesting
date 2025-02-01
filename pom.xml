@@ -11,8 +11,16 @@ SPDX-License-Identifier: Unlicense
 		<!-- NOTE This works for reactor/aggregation & child module builds. -->
 		<root.basedir>${project.basedir}/modules/parent</root.basedir>
 	</properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.illposed.osc</groupId>
+            <artifactId>javaosc-core</artifactId>
+            <version>0.10-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
-	<parent>
+    <parent>
 		<groupId>com.illposed.osc</groupId>
 		<artifactId>javaosc-parent</artifactId>
 		<version>0.10-SNAPSHOT</version>

@@ -20,6 +20,8 @@ SPDX-License-Identifier: Unlicense
 		<java.old.home>${env.JAVA_17_HOME}</java.old.home>
 		<!-- NOTE This works for reactor/aggregation & child module builds. -->
 		<root.basedir>${project.basedir}/../parent</root.basedir>
+		<maven.compiler.source>23</maven.compiler.source>
+		<maven.compiler.target>23</maven.compiler.target>
 	</properties>
 
 	<groupId>com.illposed.osc</groupId>
